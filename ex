@@ -1,0 +1,10 @@
+python GetOldTweets3.py --querysearch "❤" --lang en --maxtweets 1000 --output U+2764.csv
+python GetOldTweets3.py --querysearch "✋" --lang en --maxtweets 1000 --output U+270B.csv
+python GetOldTweets3.py --querysearch "✌" --lang en --maxtweets 1000 --output U+270C.csv
+python GetOldTweets3.py --querysearch "👌" --lang en --maxtweets 1000 --output U+1F44C.csv
+python GetOldTweets3.py --querysearch "💕" --lang en --maxtweets 1000 --output U+1F495.csv
+python GetOldTweets3.py --querysearch "♥" --lang en --maxtweets 1000 --output U+2665.csv
+python GetOldTweets3.py --querysearch "💜" --lang en --maxtweets 1000 --output U+1F49C.csv
+python GetOldTweets3.py --querysearch "💖" --lang en --maxtweets 1000 --output U+1F496.csv
+python GetOldTweets3.py --querysearch "💙" --lang en --maxtweets 1000 --output U+1F499.csv
+python GetOldTweets3.py --querysearch "💔" --lang en --maxtweets 1000 --output U+1F494.csv
