@@ -5,6 +5,7 @@ import urllib.request, urllib.parse, urllib.error
 from pyquery import PyQuery
 from .. import models
 import ssl
+import time
 
 class TweetManager:
     """A class for accessing the Twitter's search engine"""
@@ -68,7 +69,7 @@ class TweetManager:
                 json = TweetManager.getJsonResponse(tweetCriteria, refreshCursor, cookieJar, proxy, user_agent, debug=debug)
                 if len(json['items_html'].strip()) == 0:
                     break
-
+                time.sleep(2)
                 refreshCursor = json['min_position']
                 scrapedTweets = PyQuery(json['items_html'])
                 #Remove incomplete tweets withheld by Twitter Guidelines
@@ -206,13 +207,17 @@ class TweetManager:
             print(url)
             print('\n'.join(h[0]+': '+h[1] for h in headers))
 
-        try:
-            response = opener.open(url)
-            jsonResponse = response.read()
-        except Exception as e:
-            print("An error occured during an HTTP request:", str(e))
-            print("Try to open in browser: https://twitter.com/search?q=%s&src=typd" % urllib.parse.quote(urlGetData))
-            sys.exit()
+
+        while True:
+            try:
+                response = opener.open(url)
+                jsonResponse = response.read()
+                break
+            except Exception as e:
+                print("An error occured during an HTTP request:", str(e))
+                print("Try to open in browser: https://twitter.com/search?q=%s&src=typd" % urllib.parse.quote(urlGetData))
+                # sys.exit()
+                time.sleep(10)
 
         try:
             s_json = jsonResponse.decode()
